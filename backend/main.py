@@ -3,7 +3,7 @@ from flask_cors import CORS, cross_origin
 import smtplib
 
 app = Flask(__name__)
-CORS(app, resources={r"/*": {"origins": "*", "methods": ["GET", "POST", "PUT", "DELETE"],"allow_headers": ["Content-Type", "Authorization"]}}, supports_credentials=True)
+CORS(app, resources={r"/form": {"origins": "*", "methods": ["POST"]}}, supports_credentials=True)
 
 email = "kartikgoyal0852@gmail.com"
 password = "dgzfvqbpznsbcrry"
@@ -23,7 +23,7 @@ def form_data():
 
         try:
             # Send email
-            with smtplib.SMTP("smtp.gmail.com") as connection:
+            with smtplib.SMTP("smtp.gmail.com", 587) as connection:
                 connection.starttls()
                 connection.login(user=email, password=password)
                 connection.sendmail(from_addr=email, to_addrs=email, msg=message)
@@ -35,4 +35,4 @@ def form_data():
     return "Method Not Allowed", 405
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=True, host="0.0.0.0", port="8080")
