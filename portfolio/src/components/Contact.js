@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./Font.css";
 
+//https://portfoliio-backendd.onrender.com/
+
 const Contact = () => {
   const [formData, setFormData] = useState({
     name: "",
@@ -18,11 +20,14 @@ const Contact = () => {
     const { name, email, message } = formData;
 
     try {
-      const response = await axios.post("http://localhost:5000/form", {
-        name: name,
-        email: email,
-        message: message,
-      });
+      const response = await axios.post(
+        "https://portfoliio-backendd.onrender.com/form",
+        {
+          name: name,
+          email: email,
+          message: message,
+        }
+      );
       console.log("Your response", response);
     } catch (err) {
       console.log("Data nhi gya");
