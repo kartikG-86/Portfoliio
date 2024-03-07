@@ -1,13 +1,14 @@
 from flask import Flask,jsonify,request
-from flask_cors import CORS
+from flask_cors import CORS,cross_origin
 import smtplib 
 app = Flask(__name__)
-CORS(app, resources={r"/*": {"origins": "*", "methods": ["GET", "POST", "PUT", "DELETE"],"allow_headers": ["Content-Type", "Authorization"]}})
+CORS(app, supports_credentials=True)
 
 email = "kartikgoyal0852@gmail.com"
 password = "dgzfvqbpznsbcrry"
 
 @app.route('/form',methods=["POST","GET"])
+@cross_origin
 def form_data():
 
     if request.method == "POST":
