@@ -17,7 +17,7 @@ def form_data():
         with smtplib.SMTP("smtp.gmail.com") as connection:
             connection.starttls()
             connection.login(user=email,password=password)
-            connection.sendmail(from_addr=email,to_addrs=email,msg=f"Subject: Message From Portfolio \n\n Someone wants to connect you !! \n Name : {data["name"]}  \n Email : {data["email"]} \n Message:{data["message"]}".encode('utf8'))
+            connection.sendmail(from_addr=email,to_addrs=email,msg={data})
     
     return "Hello"    
 
