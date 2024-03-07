@@ -1,0 +1,118 @@
+import React from "react";
+import "./Font.css";
+
+const data = [
+  {
+    color: "#e34c26",
+    text: "HTML",
+    img: "html5.png",
+  },
+  {
+    color: "#264de4",
+    text: "CSS",
+    img: "css.png",
+  },
+  {
+    color: "#F0DB4F",
+    text: "Javascript",
+    img: "javascript.png",
+  },
+  {
+    color: "#61DBFB",
+    text: "React JS",
+    img: "logo192.png",
+  },
+  {
+    color: "#002984",
+    text: "Material Ui",
+    img: "material.png",
+  },
+  {
+    color: "#3c873a",
+    text: "Node JS",
+    img: "nodejs.png",
+  },
+  {
+    color: "#FFE873",
+    text: "Python",
+    img: "python.png",
+  },
+  {
+    color: "#00758F",
+    text: "MySQL",
+    img: "mysql.png",
+  },
+  {
+    color: "#659ad2",
+    text: "C++",
+    img: "c++.png",
+  },
+  {
+    color: "#4DB33D",
+    text: "Mongo DB",
+    img: "mongo.png",
+  },
+  {
+    color: "#FFA611",
+    text: "Firebase",
+    img: "firebase.png",
+  },
+  {
+    color: "#563d7c",
+    text: "Bootstrap",
+    img: "bootstrap.png",
+  },
+];
+
+const Experience = () => {
+  return (
+    <>
+      <section id="experience">
+        <div className="container">
+          <div
+            className="row text-start ps-5 fs-1"
+            // style={{ textDecoration: "underline #D2042D" }}
+          >
+            Experience
+          </div>
+          <hr
+            className="pb-1 ms-3"
+            style={{ width: "14rem", borderTop: " 0.2rem solid #D2042D" }}
+          />
+          <div
+            className="row text-start ps-5 pb-5  fs-6"
+            // style={{ textDecoration: "underline #D2042D" }}
+          >
+            These are the technologies I've worked with
+          </div>
+          <div className="row row-cols-1 row-cols-md-2 row-cols-sm-2 g-4 pb-5 ms-5">
+            {data.map((item) => (
+              <div className="col-lg-4">
+                <div
+                  class="card"
+                  style={{
+                    width: "22rem",
+                    borderBottom: `0.2rem solid ${item.color}`,
+                    borderLeft: `0.1rem solid ${item.color}`,
+                    borderRight: `0.1rem solid ${item.color}`,
+                    borderTop: "1px solid rgba(0, 0, 0, 0.2)",
+                  }}
+                >
+                  <div class="card-body">
+                    <img
+                      src={item.img}
+                      style={{ height: "6rem", backgroundColor: "transparent" }}
+                    />
+                    <h6 className="pt-4">{item.text}</h6>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+    </>
+  );
+};
+
+export default Experience;
