@@ -21,7 +21,7 @@ const Contact = () => {
 
     try {
       const response = await axios.post(
-        "https://portfoliio-backendd.onrender.com/form",
+        "https://portfoliio-backenddd.onrender.com/form",
         {
           name: name,
           email: email,
