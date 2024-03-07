@@ -3,7 +3,7 @@ from flask_cors import CORS, cross_origin
 import smtplib
 
 app = Flask(__name__)
-CORS(app, resources={r"/*": {"origins": "https://portfoliio-pzcr.vercel.app", "methods": ["GET", "POST", "PUT", "DELETE"],"allow_headers": ["Content-Type", "Authorization"]}}, supports_credentials=True)
+CORS(app, resources={r"/*": {"origins": "*", "methods": ["GET", "POST", "PUT", "DELETE"],"allow_headers": ["Content-Type", "Authorization"]}}, supports_credentials=True)
 
 email = "kartikgoyal0852@gmail.com"
 password = "dgzfvqbpznsbcrry"
