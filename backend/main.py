@@ -2,7 +2,7 @@ from flask import Flask,jsonify,request
 from flask_cors import CORS
 import smtplib 
 app = Flask(__name__)
-CORS(app, origins='https://portfoliio-pzcr.vercel.app')
+CORS(app, origins='https://portfoliio-pzcr-9hdy2xgev-kartikg-86.vercel.app/')
 
 email = "kartikgoyal0852@gmail.com"
 password = "dgzfvqbpznsbcrry"
