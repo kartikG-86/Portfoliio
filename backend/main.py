@@ -1,16 +1,19 @@
 from flask import Flask, jsonify, request
 from flask_cors import CORS, cross_origin
 from flask_mail import Mail, Message
-
+import os
 app = Flask(__name__)
 CORS(app, resources={r"/form": {"origins": "*", "methods": ["POST"]}}, supports_credentials=True)
+
+MAIL = os.environ.get('USER_MAIL')
+PASSWORD = os.environ.get('USER_PASSWORD')
 
 # Flask-Mail configuration
 app.config['MAIL_SERVER'] = 'smtp.gmail.com'
 app.config['MAIL_PORT'] = 587
 app.config['MAIL_USE_TLS'] = True
-app.config['MAIL_USERNAME'] = 'kartikgoyal0852@gmail.com'  # Replace with your email
-app.config['MAIL_PASSWORD'] = 'dgzfvqbpznsbcrry'         # Replace with your password
+app.config['MAIL_USERNAME'] = MAIL  # Replace with your email
+app.config['MAIL_PASSWORD'] = PASSWORD         # Replace with your password
 
 mail = Mail(app)
 
@@ -34,7 +37,7 @@ def form_data():
     return "Method Not Allowed", 405
 
 def send_email(subject, body):
-    msg = Message(subject, sender='kartikgoyal0852@gmail.com', recipients=['kartikgoyal0852@gmail.com'])
+    msg = Message(subject, sender=MAIL, recipients=[MAIL])
     msg.body = body
 
     mail.send(msg)
