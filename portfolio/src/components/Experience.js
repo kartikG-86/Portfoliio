@@ -85,23 +85,33 @@ const Experience = () => {
           >
             These are the technologies I've worked with
           </div>
-          <div className="row row-cols-1 row-cols-md-2 row-cols-sm-2 g-4 pb-5 ms-5">
-            {data.map((item) => (
-              <div className="col-lg-4">
+          <div className="row row-cols-1 row-cols-md-2 row-cols-sm-2 g-4 pb-5 mx-3">
+            {data.map((item, index) => (
+              <div className="col-lg-4" key={index}>
                 <div
-                  class="card"
+                  className="card"
                   style={{
-                    width: "22rem",
+                    width: "100%", // Set width to 100% initially
                     borderBottom: `0.2rem solid ${item.color}`,
                     borderLeft: `0.1rem solid ${item.color}`,
                     borderRight: `0.1rem solid ${item.color}`,
                     borderTop: "1px solid rgba(0, 0, 0, 0.2)",
+                    // Apply margin based on screen size
+                    marginBottom:
+                      index % 2 === 0 ? "mb-md-4 mb-sm-3" : "mb-md-0 mb-sm-0", // For even index
+                    marginTop:
+                      index % 2 === 0 ? "mt-md-0 mt-sm-0" : "mt-md-4 mt-sm-3", // For odd index
+                    marginLeft:
+                      index % 2 === 0 ? "ml-md-0 ml-sm-0" : "ml-md-5 ml-sm-4", // For even index
+                    marginRight:
+                      index % 2 === 0 ? "mr-md-5 mr-sm-4" : "mr-md-0 mr-sm-0", // For odd index
                   }}
                 >
-                  <div class="card-body">
+                  <div className="card-body">
                     <img
                       src={item.img}
                       style={{ height: "6rem", backgroundColor: "transparent" }}
+                      alt=""
                     />
                     <h6 className="pt-4">{item.text}</h6>
                   </div>

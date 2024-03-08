@@ -94,7 +94,7 @@ const Footer = ({ scrollToSection }) => {
           </ul>
         </div>
         <div class="col mb-3">
-          <h5 className="mb-4 pe-5">Contact</h5>
+          <h5 className="mb-4 px-5 text-center">Contact</h5>
           <ul className="nav flex-column text-center">
             <li className="nav-item mb-4">
               <a

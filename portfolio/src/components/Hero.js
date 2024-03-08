@@ -41,7 +41,7 @@ const Hero = () => {
   return (
     <>
       <section id="home">
-        <div className="container pt-5 ps-5 pb-5">
+        <div className="container pt-5 px-3 pb-5">
           <div className="row pt-5 ps-2">
             <div
               className="col-lg-12 pt-5  text-start"
@@ -70,7 +70,7 @@ const Hero = () => {
                 class="btn btn-outline-light me-4 mb-5"
                 onClick={handleDownloadResume}
               >
-                Download My Resume <i class="bi bi-download ms-2"></i>
+                Download My CV <i class="bi bi-download ms-2"></i>
               </button>
               <Link
                 to="contact"
