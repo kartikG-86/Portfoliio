@@ -67,6 +67,10 @@ const Contact = () => {
     }
   }, [msg]);
 
+  // Check if form fields are empty
+  const isFormEmpty =
+    formData.name === "" || formData.email === "" || formData.message === "";
+
   return (
     <section id="contact" className="mt-5 mb-5">
       <div className="container">
@@ -124,7 +128,11 @@ const Contact = () => {
                 Message
               </label>
             </div>
-            <button className="btn btn-primary py-2" type="submit">
+            <button
+              className="btn btn-primary py-2"
+              type="submit"
+              disabled={isFormEmpty || loading} // Disable button if form is empty or loading
+            >
               {loading ? (
                 <span
                   className="spinner-border spinner-border-sm me-2"
