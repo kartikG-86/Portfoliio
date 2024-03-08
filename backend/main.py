@@ -34,7 +34,7 @@ def form_data():
     return "Method Not Allowed", 405
 
 def send_email(subject, body):
-    msg = Message(subject, recipients=['kartikgoyal0852@gmail.com'])  # Replace with recipient email
+    msg = Message(subject, sender='kartikgoyal0852@gmail.com', recipients=['kartikgoyal0852@gmail.com'])
     msg.body = body
 
     mail.send(msg)
