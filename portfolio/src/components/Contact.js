@@ -2,8 +2,6 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./Font.css";
 
-//https://portfoliio-backendd.onrender.com/
-
 const Contact = () => {
   const [formData, setFormData] = useState({
     name: "",
@@ -11,10 +9,12 @@ const Contact = () => {
     message: "",
   });
 
-  const [msg, setmsg] = useState(false);
+  const [msg, setMsg] = useState(false);
+  const [loading, setLoading] = useState(false); // State to manage loading spinner
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true); // Activate loading spinner
 
     // Accessing form data
     const { name, email, message } = formData;
@@ -29,9 +29,12 @@ const Contact = () => {
         }
       );
       console.log("Your response", response);
+      setMsg(true); // Show success message
     } catch (err) {
       console.log("Data nhi gya");
     }
+
+    setLoading(false); // Deactivate loading spinner
 
     // Log form data
     console.log("Name:", name);
@@ -44,8 +47,6 @@ const Contact = () => {
       email: "",
       message: "",
     });
-
-    setmsg(true);
   };
 
   const handleChange = (e) => {
@@ -59,7 +60,7 @@ const Contact = () => {
   useEffect(() => {
     if (msg) {
       const timer = setTimeout(() => {
-        setmsg(false);
+        setMsg(false);
       }, 2000); // 2 seconds
 
       return () => clearTimeout(timer);
@@ -78,7 +79,7 @@ const Contact = () => {
           Submit the form below to get in touch with me
         </div>
         {msg && (
-          <div class="alert alert-success" role="alert">
+          <div className="alert alert-success" role="alert">
             Message Sent Successfully 😄😄
           </div>
         )}
@@ -124,6 +125,13 @@ const Contact = () => {
               </label>
             </div>
             <button className="btn btn-primary py-2" type="submit">
+              {loading ? (
+                <span
+                  className="spinner-border spinner-border-sm me-2"
+                  role="status"
+                  aria-hidden="true"
+                ></span>
+              ) : null}
               Let's Talk
             </button>
           </form>
