@@ -1,12 +1,18 @@
 from flask import Flask, jsonify, request
 from flask_cors import CORS, cross_origin
-import smtplib
+from flask_mail import Mail, Message
 
 app = Flask(__name__)
 CORS(app, resources={r"/form": {"origins": "*", "methods": ["POST"]}}, supports_credentials=True)
 
-email = "kartikgoyal0852@gmail.com"
-password = "dgzfvqbpznsbcrry"
+# Flask-Mail configuration
+app.config['MAIL_SERVER'] = 'smtp.gmail.com'
+app.config['MAIL_PORT'] = 587
+app.config['MAIL_USE_TLS'] = True
+app.config['MAIL_USERNAME'] = 'kartikgoyal0852@gmail.com'  # Replace with your email
+app.config['MAIL_PASSWORD'] = 'dgzfvqbpznsbcrry'         # Replace with your password
+
+mail = Mail(app)
 
 @app.route('/form', methods=["POST"])
 @cross_origin()
@@ -14,25 +20,24 @@ def form_data():
     if request.method == "POST":
         data = request.json
 
-        print(data)
-
         # Construct email message
         subject = "Message From Portfolio"
         body = f"Someone wants to connect with you!\nName: {data.get('name', '')}\nEmail: {data.get('email', '')}\nMessage: {data.get('message', '')}"
-        message = f"Subject: {subject}\n\n{body}"
 
         try:
-            # Send email
-            with smtplib.SMTP("smtp.gmail.com", 587) as connection:
-                connection.starttls()
-                connection.login(user=email, password=password)
-                connection.sendmail(from_addr=email, to_addrs=email, msg=message)
-
+            # Send email asynchronously
+            send_email(subject, body)
             return jsonify({"message": "Email sent successfully"}), 200
         except Exception as e:
             return jsonify({"error": str(e)}), 500
 
     return "Method Not Allowed", 405
+
+def send_email(subject, body):
+    msg = Message(subject, recipients=['kartikgoyal0852@gmail.com'])  # Replace with recipient email
+    msg.body = body
+
+    mail.send(msg)
 
 if __name__ == "__main__":
     app.run(debug=True, host="0.0.0.0", port="8080")
