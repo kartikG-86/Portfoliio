@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import "./Font.css";
 import { Link } from "react-scroll";
-import resumePdf from "../Kartik_Goyal_2024.pdf";
+import resumePdf from "../Kartik-Goyal-2024-latest.pdf";
 import Typed from "typed.js";
 
 const Hero = () => {
@@ -9,7 +9,7 @@ const Hero = () => {
     // Create a temporary anchor element
     const anchor = document.createElement("a");
     anchor.href = resumePdf;
-    anchor.download = "Kartik_Goyal_2024.pdf";
+    anchor.download = "Kartik-Goyal-2024-latest.pdf";
     anchor.click();
   };
 
